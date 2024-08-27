@@ -30,7 +30,16 @@ const Header = () => {
 
   useEffect(() => {
     axios
-      .post(`${baseUrl}/api/cart`, { ids: favouriteProducts })
+      .post(
+        `${baseUrl}/api/cart`,
+        { ids: favouriteProducts },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        }
+      )
       .then((res) => setFavourites(res.data));
   }, [favouriteProducts]);
 
