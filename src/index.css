@@ -1,0 +1,144 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  /* font-optical-sizing: auto; */
+  /* background-color: #F2F4F8 */
+}
+
+nav {
+  @apply flex justify-around items-center gap-5 text-gray-300;
+  color: "#aaa";
+}
+#featured {
+  @apply grid grid-cols-1 lg:grid-cols-2  gap-7 p-5;
+}
+#featured-left {
+  @apply text-white self-center;
+}
+#featured-left h1 {
+  font-size: 2rem;
+  letter-spacing: 3px;
+  font-weight: 700;
+}
+#featured-left p {
+  color: rgba(34, 32, 32, 0.795);
+}
+
+#featured-right {
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+#button-wrapper {
+  @apply flex flex-col md:flex-row gap-3 md:gap-6 mt-5;
+}
+
+#new-products {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-10 mt-5 place-items-center;
+}
+
+#cart-wrapper {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 40px;
+  margin-top: 80px;
+}
+
+#cart-left {
+  background-color: rgb(255, 246, 246);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+#increase-button {
+  background-color: black;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 3px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+#decrease-button {
+  background-color: black;
+  color: rgb(245, 236, 236);
+  padding: 3px 8px;
+  border-radius: 3px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+#cart-right {
+  background-color: rgba(240, 240, 240, 0.685);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  /* opacity: .8; */
+  padding: 20px;
+  color: rgb(8, 1, 1);
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+/* input {
+  padding: 5px 15px;
+  border-radius: 5px;
+  outline: none;
+  background-color: #222;
+  color: rgb(250, 248, 248);
+
+  font-weight: 300;
+  width: 100%;
+  font-weight: 300;
+} */
+
+#success-msg {
+  width: 50%;
+  margin: auto;
+  margin-top: 30vh;
+  background-color: #222;
+  color: white;
+  padding: 20px;
+  font-weight: 700;
+  height: 200px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+#form-input {
+  background-color: #eeeeee !important;
+  color: black;
+}
+
+#all-categories {
+  @apply grid grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4 mt-5 p-3 md:p-0;
+}
+
+@media screen and (max-width: 767px) {
+  #cart-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-top: 80px;
+  }
+  #price-icon {
+    opacity: 1;
+  }
+  #cart-icon {
+    opacity: 1;
+  }
+}
