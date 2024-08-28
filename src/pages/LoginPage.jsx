@@ -72,7 +72,7 @@ const LoginPage = () => {
 
   return (
     <>
-      <div className="w-full bg-gray-200 flex items-center justify-center py-20">
+      <div className="w-ful min-h-screen bg-gray-200 flex items-center justify-center py-20">
         <div className="w-[90vw] lg:w-[40vw] bg-white p-10 rounded-md border-2 border-black">
           {/* logo */}
           <div className="flex justify-center mb-5">
@@ -93,7 +93,7 @@ const LoginPage = () => {
                   className="px-5 py-2 outline-none rounded bg-gray-200 focus:border-2 focus:border-primary"
                   type="email"
                   name="email"
-                  id=""
+                  id="email"
                 />
               </div>
 
@@ -106,7 +106,7 @@ const LoginPage = () => {
                   className="px-5 py-2 outline-none rounded bg-gray-200 focus:border-2 focus:border-primary"
                   type="password"
                   name="password"
-                  id=""
+                  id="password"
                 />
               </div>
 
@@ -119,7 +119,7 @@ const LoginPage = () => {
                   className="px-5 py-2 outline-none rounded bg-gray-200 focus:border-2 focus:border-primary"
                   type="password"
                   name="password"
-                  id=""
+                  id="con-password"
                 />
               </div>
 

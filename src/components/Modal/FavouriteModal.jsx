@@ -13,7 +13,6 @@ const FavouriteModal = ({ isVisible, setShowModal, favourites }) => {
       setShowModal(false);
   };
 
-  //   console.log(favourites);
   return (
     <div
       onClick={handelClose}

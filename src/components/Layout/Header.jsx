@@ -37,6 +37,7 @@ const Header = () => {
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
+            Origin: "https://easy-tech-ten.vercel.app/",
           },
         }
       )
@@ -57,7 +58,7 @@ const Header = () => {
             <div className="flex items-center justify-between w-[100%]">
               {/* logo */}
               <div
-                className="cursor-pointer hidden lg:block "
+                className="cursor-pointer  "
                 onClick={() => router("/")}
                 id="logo"
               >
@@ -65,13 +66,13 @@ const Header = () => {
               </div>
 
               {/* searchbox */}
-              <div className="flex items-center relative lg:hidden">
+              {/* <div className="flex items-center relative lg:hidden">
                 <input
-                  className="rounded-md bg-gray-300 px-1 md:px-5 py-1 outline-none text-black"
+                  className="rounded-md bg-gray-300 px-3 md:px-5 py-1 outline-none text-black text-xs"
                   type="text"
                   name=""
                   id=""
-                  placeholder="search products"
+                  placeholder="search.."
                   onChange={(e) => {
                     setSearchedWord(e.target.value);
                   }}
@@ -84,18 +85,18 @@ const Header = () => {
                   // onClick={() => {
                   //   router("/#products");
                   // }}
-                  className="bg-[#7C00FE] text-white px-2 lg:px-4 py-1 rounded-tr-md rounded-br-md absolute right-0 bottom-0 cursor-pointer"
+                  className="bg-[#7C00FE] text-white text-xs px-2 lg:px-4 py-1 rounded-tr-md rounded-br-md absolute right-0 bottom-0 cursor-pointer"
                 >
                   Search
                 </a>
-              </div>
+              </div> */}
 
               <div className=" items-center gap-2  hidden lg:block">
                 <nav className="text-black flex items-center gap-4">
                   <Link
                     className={`${
                       location.pathname === "/" && "font-bold text-[#7C00FE]"
-                    } `}
+                    } hover:scale-110 transition-all duration-300 ease-in-out`}
                     to={"/"}
                   >
                     Home
@@ -103,13 +104,13 @@ const Header = () => {
                   <Link
                     className={`${
                       location.pathname.includes("/product") &&
-                      "font-bold text-[#7C00FE]"
-                    } `}
+                      "font-bold text-[#7C00FE] "
+                    } hover:scale-110 transition-all duration-300 ease-in-out`}
                     to="/products"
                   >
                     Products
                   </Link>
-                  <a
+                  {/* <a
                     className={`${
                       location.pathname.includes("/categories") ||
                       (location.pathname.includes("singleCategoryProducts") &&
@@ -118,21 +119,21 @@ const Header = () => {
                     href="#categories"
                   >
                     Categories
-                  </a>
+                  </a> */}
                   <Link
                     className={`${
                       location.pathname.includes("/cart") &&
-                      "font-bold text-[#7C00FE]"
+                      "font-bold text-[#7C00FE] "
                     } `}
                     to="/cart"
                   >
-                    <div className="  rounded-[50%] p-1 ">
+                    <div className="hover:scale-110 transition-all duration-300 ease-in-out  rounded-[50%] p-1 ">
                       <p>Cart ({cartProducts?.length})</p>
                     </div>
                   </Link>
                   <Link
                     to=""
-                    className="flex relative"
+                    className="flex relative hover:scale-110 transition-all duration-300 ease-in-out"
                     onClick={() => setShowModal(true)}
                   >
                     <div className=" text-black rounded-[50%] p-1 ">
@@ -181,7 +182,7 @@ const Header = () => {
                           setUser({});
                           window.location.reload();
                         }}
-                        className="bg-[#7C00FE] text-white font-bold px-4 py-1 cursor-pointer rounded-md "
+                        className="bg-[#7C00FE] hover:scale-110 transition-all duration-300 ease-in-out text-white font-bold px-4 py-1 cursor-pointer rounded-md "
                       >
                         Log Out
                       </span>
@@ -189,7 +190,7 @@ const Header = () => {
                   ) : (
                     <div
                       onClick={() => router("/login")}
-                      className="bg-[#7C00FE] text-white font-bold px-4 py-1 cursor-pointer rounded-md "
+                      className="bg-[#7C00FE] hover:scale-110 transition-all duration-300 ease-in-out text-white font-bold px-4 py-1 cursor-pointer rounded-md "
                     >
                       Log in
                     </div>

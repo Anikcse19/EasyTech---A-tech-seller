@@ -83,15 +83,12 @@ const HomePage = () => {
 
   return (
     <Layout>
-      <div className="min-h-[100vh]">
+      <div className="">
         <Featured products={newProducts} />
         <FeaturedCategories />
       </div>
       {/* advertisement */}
-      <div
-        className="w-[90%]  mx-auto my-16
-       grid grid-cols-1 lg:grid-cols-2 items-center gap-6 "
-      >
+      <div className="w-[90%]  mx-auto my-8 grid grid-cols-1 lg:grid-cols-2 items-center gap-6 ">
         <div className="w-full">
           <img
             src="/offerAd1.jpg"

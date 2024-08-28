@@ -1,10 +1,6 @@
 /* eslint-disable react/prop-types */
 
 const Button = ({ children, ...rest }) => {
-  // console.log(rest);
-  // function rest.goToPayment(){
-  //   console.log('cccc')
-  // }
   return (
     <div
       className={`${rest.black && "bg-white text-black border border-black"} ${

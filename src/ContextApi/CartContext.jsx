@@ -13,7 +13,6 @@ export function CartContextProvider({ children }) {
 
   useEffect(() => {
     setTimeout(() => {
-      // console.log('inner useeffect',cartProducts.length)
       if (cartProducts?.length >= 0) {
         localStorage?.setItem("cart", JSON.stringify(cartProducts));
       }

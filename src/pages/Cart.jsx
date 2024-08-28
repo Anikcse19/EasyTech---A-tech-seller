@@ -48,7 +48,7 @@ const CartPage = () => {
       country,
       cartProducts,
     };
-    // console.log(buyerData);
+
     const response = await axios.post(
       `${baseUrl}/api/orders/checkout`,
       buyerData
@@ -65,9 +65,8 @@ const CartPage = () => {
       }
       if (window?.location.href.includes("success")) {
         setIsSuccess(true);
-        // console.log(cartProducts.length);
+
         clearCart();
-        // console.log(cartProducts.length);
       }
     }, 300);
   }, []);

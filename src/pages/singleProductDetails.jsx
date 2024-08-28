@@ -42,7 +42,6 @@ const SingleProductDetails = () => {
   const user = Cookies.get("user") && JSON.parse(Cookies.get("user"));
 
   const { id } = useParams();
-  console.log("id", id);
 
   const fetchProduct = () => {
     if (id) {
@@ -54,16 +53,12 @@ const SingleProductDetails = () => {
     }
   };
 
-  console.log(products, "fff");
-
   let matchedProducts = [];
   products.filter((p) => {
     if (p.category === product.category) {
       matchedProducts.push(p);
     }
   });
-
-  console.log(matchedProducts, "match");
 
   useEffect(() => {
     if (id) {
@@ -72,6 +67,11 @@ const SingleProductDetails = () => {
 
     axios.get(`${baseUrl}/api/products`).then((res) => setProducts(res?.data));
   }, [id]);
+
+  const discounted_price = product?.price;
+  const discount_percentage = parseFloat(product?.discount) / 100;
+
+  const original_price = parseInt(discounted_price / (1 - discount_percentage));
 
   const updateProductWithReview = async () => {
     const rev = {
@@ -175,8 +175,8 @@ const SingleProductDetails = () => {
                   <span className="font-bold text-sm md:text-lg">
                     &#2547;{product?.price}
                   </span>
-                  <p className="text-sm text-gray-400">
-                    <del> &#2547; 600</del>
+                  <p className="text-sm text-gray-400 line-through">
+                    &#2547;{original_price}
                   </p>
                 </div>
                 <div>

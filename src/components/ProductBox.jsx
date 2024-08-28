@@ -4,6 +4,11 @@ import { Rating } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const ProductBox = ({ product, from }) => {
+  const discounted_price = product?.price;
+  const discount_percentage = parseFloat(product?.discount) / 100;
+
+  const original_price = parseInt(discounted_price / (1 - discount_percentage));
+
   return (
     <div className="relative z-[1] w-[100%]  border border-gray-400 rounded-md  group">
       <Link to={`/product/${product?._id}`} className="cursor-pointer">
@@ -34,8 +39,10 @@ const ProductBox = ({ product, from }) => {
           <span className="group-hover:text-[#7C00FE] font-bold text-xs md:text-sm lg:text-base">
             &#2547; {product?.price}
           </span>
+          <span>
+            <del className="text-xs">&#2547; {original_price}</del>
+          </span>
           <span className="text-red-600 animate-pulse text-xs md:text-sm lg:text-base">
-            {" "}
             {product?.discount ? ` - ${product?.discount}` : "- 60%"}
           </span>
         </div>
@@ -43,6 +50,7 @@ const ProductBox = ({ product, from }) => {
         <div className="flex items-center justify-between">
           <Rating
             className="text-xs md:text-sm "
+            size="small"
             name="half-rating-read"
             value={product?.rating ? product?.rating : 3.5}
             precision={0.5}
