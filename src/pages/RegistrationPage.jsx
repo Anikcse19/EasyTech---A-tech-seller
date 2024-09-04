@@ -44,7 +44,7 @@ const RegistrationPage = () => {
       // Handle success (e.g., redirect to a different page, show a success message)
 
       if (data?.message == "user registered") {
-        navigate("/");
+        navigate("/login");
 
         toast.success("User Registered Successfully");
       } else {

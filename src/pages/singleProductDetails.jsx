@@ -82,16 +82,25 @@ const SingleProductDetails = () => {
 
     if (comment == "") return;
     await axios
-      .post("/api/products/", {
-        _id: product._id,
-        title: product.title,
-        description: product.description,
-        price: product.price,
-        category: product.category,
-        properties: product.properties,
-        url: product.url,
-        review: rev,
-      })
+      .post(
+        `${baseUrl}/api/products`,
+        {
+          _id: product._id,
+          title: product.title,
+          description: product.description,
+          price: product.price,
+          category: product.category,
+          properties: product.properties,
+          url: product.url,
+          review: rev,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        }
+      )
       .then(async (res) => {
         if (res.status == 200) {
           setComment("");
