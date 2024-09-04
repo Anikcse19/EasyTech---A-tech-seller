@@ -74,43 +74,52 @@ const SingleProductDetails = () => {
   const original_price = parseInt(discounted_price / (1 - discount_percentage));
 
   const updateProductWithReview = async () => {
-    const rev = {
-      comment: comment,
-      rating: rating,
-      userName: user?.name,
-    };
-
-    if (comment == "") return;
-    await axios
-      .post(
-        `${baseUrl}/api/products`,
-        {
-          _id: product._id,
-          title: product.title,
-          description: product.description,
-          price: product.price,
-          category: product.category,
-          properties: product.properties,
-          url: product.url,
-          review: rev,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-        }
-      )
-      .then(async (res) => {
-        if (res.status == 200) {
-          setComment("");
-          setRating(0);
-          fetchProduct();
-          toast.success("Review Added");
-        } else {
-          toast.error("Error");
-        }
+    if (!user) {
+      toast.error("Please Login first", {
+        position: "top-right",
       });
+      setRating(0);
+      setComment("");
+      return;
+    } else {
+      const rev = {
+        comment: comment,
+        rating: rating,
+        userName: user?.name,
+      };
+
+      if (comment == "") return;
+      await axios
+        .post(
+          `${baseUrl}/api/products`,
+          {
+            _id: product._id,
+            title: product.title,
+            description: product.description,
+            price: product.price,
+            category: product.category,
+            properties: product.properties,
+            url: product.url,
+            review: rev,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+          }
+        )
+        .then(async (res) => {
+          if (res.status == 200) {
+            setComment("");
+            setRating(0);
+            fetchProduct();
+            toast.success("Review Added");
+          } else {
+            toast.error("Error");
+          }
+        });
+    }
   };
 
   return (
@@ -170,7 +179,6 @@ const SingleProductDetails = () => {
                         >
                           <FaRegHeart className="text-base md:text-lg lg:text-xl" />
                         </div>
-                        <Toaster position="bottom-right" reverseOrder={false} />
                       </div>
                     )}
                   </div>
@@ -240,6 +248,7 @@ const SingleProductDetails = () => {
                       if (a === product?._id) {
                         toast("Already added");
                       } else {
+                        toast.success("Add to Favourites");
                         addProduct(product._id);
                       }
                     }}

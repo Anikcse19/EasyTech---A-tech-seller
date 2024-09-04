@@ -2,9 +2,11 @@
 
 import { useContext } from "react";
 import { CartContext } from "../../ContextApi/CartContext";
+import { useNavigate } from "react-router-dom";
 
 const FavouriteModal = ({ isVisible, setShowModal, favourites }) => {
   const { removeFavourite } = useContext(CartContext);
+  const navigate = useNavigate();
 
   if (!isVisible) return null;
 
@@ -17,20 +19,20 @@ const FavouriteModal = ({ isVisible, setShowModal, favourites }) => {
     <div
       onClick={handelClose}
       id="wrapper"
-      className="z-[2] fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center text-center"
+      className="z-[2] fixed inset-0 bg-opacity-25 backdrop-blur-sm flex justify-center text-center"
     >
       <div
         onClick={handelClose}
         id="wrapper1"
-        className="w-[400px] py-2 px-4 flex flex-col justify-center -z-10"
+        className="w-[300px] lg:w-[600px] py-2 px-4 flex flex-col justify-center -z-10 "
       >
         <div
           onClick={() => setShowModal(false)}
-          className="cursor-pointer flex self-end text-base font-bold text-white"
+          className="cursor-pointer flex self-end text-base font-bold text-black"
         >
           X
         </div>
-        <div className="bg-white p-2 rounded">
+        <div className="p-4 lg:p-12 rounded bg-white border border-black">
           <h1 className="text-left font-bold text-xl">Favourites List</h1>
           <div className="my-3 flex flex-col gap-2">
             {favourites.length > 0 ? (
@@ -39,7 +41,13 @@ const FavouriteModal = ({ isVisible, setShowModal, favourites }) => {
                   key={favourite._id}
                   className="flex justify-between items-center p-3 border border-black"
                 >
-                  <div className="flex items-center">
+                  <div
+                    onClick={() => {
+                      navigate(`/product/${favourite._id}`);
+                      setShowModal(false);
+                    }}
+                    className="flex items-center cursor-pointer"
+                  >
                     <img
                       className="w-[50px] flex justify-center items-center"
                       src={favourite?.url}

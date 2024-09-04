@@ -42,7 +42,7 @@ const ProductBox = ({ product, from }) => {
           <span>
             <del className="text-xs">&#2547; {original_price}</del>
           </span>
-          <span className="text-red-600 animate-pulse text-xs md:text-sm lg:text-base">
+          <span className="text-red-600 font-bold animate-pulse text-xs md:text-sm lg:text-base">
             {product?.discount ? ` - ${product?.discount}` : "- 60%"}
           </span>
         </div>

@@ -36,13 +36,25 @@ const Featured = ({ products }) => {
     }
   };
 
+  if (products.length <= 0) {
+    return (
+      <Center>
+        <div className=" w-full h-[100vh] flex items-center justify-between gap-10">
+          <div className="bg-gray-500 animate-pulse w-full h-1/2 rounded-md" />
+
+          <div className="bg-gray-500 animate-pulse w-full h-1/2 rounded-md" />
+        </div>
+      </Center>
+    );
+  }
+
   return (
-    <div style={{ paddingTop: "30px" }}>
+    <div className="min-h-[100vh]  flex items-center">
       <Center>
         <Carousel
           swipeable={true}
           draggable={false}
-          showDots={false}
+          showDots={true}
           responsive={responsive}
           ssr={true} // means to render carousel on server-side.
           infinite={true}
@@ -53,19 +65,23 @@ const Featured = ({ products }) => {
           transitionDuration={500}
           containerClass="carousel-container"
           removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
+          pauseOnHover={false}
           // deviceType={this.props.deviceType}
           dotListClass="custom-dot-list-style"
           itemClass="carousel-item-padding-40-px"
+          className=" h-full"
         >
           {products.map((product, i) => (
-            <div key={i} id="featured">
-              <div id="featured-left" className="order-2 lg:order-1">
-                <h1 className="text-black">{product.title}</h1>
-                <p className="text-blue-900 hidden lg:block">{`${product?.description.slice(
+            <div className=" h-full" key={i} id="featured">
+              <div id="featured-left" className="order-2 lg:order-1 h-full">
+                <h1 className="text-black text-base md:text-lg lg:text-xl">
+                  {product.title}
+                </h1>
+                <p className="text-blue-900 hidden lg:block py-3">{`${product?.description.slice(
                   0,
-                  400
+                  600
                 )}...`}</p>
-                <p className="text-blue-900 block lg:hidden">{`${product?.description.slice(
+                <p className="text-blue-900 block lg:hidden py-4">{`${product?.description.slice(
                   0,
                   200
                 )}...`}</p>

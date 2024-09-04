@@ -17,8 +17,7 @@ const Header = () => {
   const [isMobileMenu, setIsMobileMenu] = useState(false);
   const [user, setUser] = useState({});
 
-  const { cartProducts, favouriteProducts, setSearchedWord } =
-    useContext(CartContext);
+  const { cartProducts, favouriteProducts } = useContext(CartContext);
 
   const router = useNavigate();
   const location = useLocation();
@@ -103,7 +102,7 @@ const Header = () => {
                   </Link>
                   <Link
                     className={`${
-                      location.pathname.includes("/product") &&
+                      location.pathname.includes("/products") &&
                       "font-bold text-[#7C00FE] "
                     } hover:scale-110 transition-all duration-300 ease-in-out`}
                     to="/products"

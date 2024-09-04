@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
       <div className="relative w-full">
         <Header />
       </div>
-      <div className="py-10">{children}</div>
+      <div className="py-10 min-h-[100vh]">{children}</div>
       <Footer />
     </div>
   );
